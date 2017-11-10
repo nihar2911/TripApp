@@ -9,10 +9,28 @@
 
 <ion-content padding>
   <h3>Ionic Menu Starter</h3>
+<ion-list>
+  <ion-item-sliding *ngFor = "let trip of trips | async">
+    <ion-item>
+      {{trip.text}}
+    </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="danger" (click)="removeTrip(trip._id)" >
+        <ion-icon name="trash"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+<!-- <button ion-button color="danger" (click)="addTrip()" >
+  <ion-icon name="add"></ion-icon>
+</button> -->
 
+<ion-fab right bottom>
+  <button ion-fab color="danger" (click)="addTrip()" >
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>
   <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>
