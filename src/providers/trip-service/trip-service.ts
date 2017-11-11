@@ -1,5 +1,5 @@
 import { AppSettingProvider } from '../app-setting/app-setting';
-import { HttpModule } from '@angular/http';
+// import { HttpModule } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';

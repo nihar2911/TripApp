@@ -11,12 +11,19 @@ import { Observable } from 'rxjs/Observable';
 export class HomePage {
 
   trips: Observable<any>;
+  temp: any;
   constructor(public navCtrl: NavController, public TripServiceProvider: TripServiceProvider, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.loadTrips();
   }
-
+ 
   loadTrips() {
     this.trips = this.TripServiceProvider.getTrips();
+    this.trips.subscribe((val) => {
+      console.log(val);
+      this.temp = val;
+    });
+    console.log("Trips", this.trips);
+    console.log("Trips in temp", this.temp);
   }
 
   addTrip() {
