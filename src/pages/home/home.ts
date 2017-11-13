@@ -23,11 +23,11 @@ export class HomePage {
   loadTrips() {
     this.trips = this.TripServiceProvider.getTrips();
     this.trips.subscribe((val) => {
-      console.log(val);
+      // console.log(val);
       this.temp = val;
     });
-    console.log("Trips", this.trips);
-    console.log("Trips in temp", this.temp);
+    // console.log("Trips", this.trips);
+    // console.log("Trips in temp", this.temp);
   }
 
   addTrip() {

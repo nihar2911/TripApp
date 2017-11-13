@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the AddContributorsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { TripServiceProvider } from './../../providers/trip-service/trip-service';
+import { Observable } from 'rxjs/Observable';
+
+
 
 @IonicPage()
 @Component({
@@ -15,11 +13,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AddContributorsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  trips: Observable<any>;
+  temp;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public tripService: TripServiceProvider) {
+    this.loadTrips();
   }
-
+  // Views
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddContributorsPage');
-  }
+  };
 
+  loadTrips() {
+    this.trips = this.tripService.getTrips();
+    this.trips.subscribe((val) => {
+      console.log(val);
+      this.temp = val;
+      console.log("Trips in temp inside subscribe", this.temp);
+    });
+  };
+
+  createTrip(){
+    
+  }
 }
