@@ -20,7 +20,6 @@ export class TripServiceProvider {
     return this.http.post(this.apiUrl + 'trips', { 'text': newTrip }).map(response => response.json().result);
   }
 
-
   public deleteTrip(tripId) {
     return this.http.delete(this.apiUrl + 'trips/' + tripId).map(response => response.json().result);
   }

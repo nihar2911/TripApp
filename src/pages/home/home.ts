@@ -2,6 +2,8 @@ import { TripServiceProvider } from './../../providers/trip-service/trip-service
 import { Component } from '@angular/core';
 import { NavController, AlertController, ToastController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
+import { AddContributorsPage } from '../add-contributors/add-contributors'
+
 
 
 @Component({
@@ -15,7 +17,9 @@ export class HomePage {
   constructor(public navCtrl: NavController, public TripServiceProvider: TripServiceProvider, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.loadTrips();
   }
- 
+  addContriPage(){
+    this.navCtrl.push(AddContributorsPage);
+  }
   loadTrips() {
     this.trips = this.TripServiceProvider.getTrips();
     this.trips.subscribe((val) => {

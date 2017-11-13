@@ -1,36 +1,12 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3> 
- 
-<ion-list>
-  <ion-item-sliding *ngFor = "let trip of temp">
-    <ion-item>
-      {{trip.text}}
-    </ion-item>
-    <ion-item-options side="right">
-      <button ion-button color="danger" (click)="removeTrip(trip._id)" >
-        <ion-icon name="trash"></ion-icon>
-        Delete
-      </button>
-    </ion-item-options>
-  </ion-item-sliding>
-</ion-list>
+<ion-content padding class="background">
+  <h2>Welcome!</h2>
+  <img src="../assets/imgs/logo.png" alt="Logo" srcset="" width="100">
+  <p>
+    Enjoy your trip!
+    <br> Leave your calculations to us..
+  </p>
+  <p>
+    <button ion-button color="orange-dark" (click)="addContriPage();">Create Trip</button>
+  </p>
 
-<!-- <button ion-button color="danger" (click)="addTrip()" >
-  <ion-icon name="add"></ion-icon>
-</button> -->
-
-<ion-fab right bottom>
-  <button ion-fab color="danger" (click)="addTrip()" >
-    <ion-icon name="add"></ion-icon>
-  </button>
-</ion-fab>
-  <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>
