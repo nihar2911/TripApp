@@ -1,3 +1,4 @@
+import { TripCrudPage } from './../pages/trip-crud/trip-crud';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -18,7 +19,8 @@ import { TripServiceProvider } from '../providers/trip-service/trip-service';
     MyApp,
     HomePage,
     ListPage,
-    AddContributorsPage
+    AddContributorsPage,
+    TripCrudPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { TripServiceProvider } from '../providers/trip-service/trip-service';
     MyApp,
     HomePage,
     ListPage,
-    AddContributorsPage
+    TripCrudPage,
+    AddContributorsPage,
   ],
   providers: [
     AppSettingProvider,

@@ -3,25 +3,27 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 
 import { TripServiceProvider } from './../../providers/trip-service/trip-service';
 import { Observable } from 'rxjs/Observable';
-
-
+import { AddContributorsPage } from '../add-contributors/add-contributors'
 
 @IonicPage()
 @Component({
-  selector: 'page-add-contributors',
-  templateUrl: 'add-contributors.html',
+  selector: 'page-trip-crud',
+  templateUrl: 'trip-crud.html',
 })
-export class AddContributorsPage {
+export class TripCrudPage {
 
   trips: Observable<any>;
   temp;
   constructor(public navCtrl: NavController, public navParams: NavParams, public tripService: TripServiceProvider, public alertCtrl: AlertController) {
     this.loadTrips();
   }
-  // Views
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddContributorsPage');
-  };
+    console.log('ionViewDidLoad TripCrudPage');
+  }
+  tripinfo(item){
+    this.navCtrl.push(AddContributorsPage);
+  }
 
   loadTrips() {
     this.trips = this.tripService.getTrips();
@@ -32,7 +34,7 @@ export class AddContributorsPage {
     });
   };
 
-  createTrip(){
+  createTrip() {
     let prompt = this.alertCtrl.create({
       title: "Add trip",
       inputs: [
@@ -42,21 +44,28 @@ export class AddContributorsPage {
         },
       ],
       buttons:
-      [
-        {
-          text: 'Cancle'
-        },
-        {
-          text: 'Save',
-          handler: data => {
-            this.tripService.addTrip(data.text).subscribe(data => {
-              this.loadTrips();
-            });
+        [
+          {
+            text: 'Cancle'
+          },
+          {
+            text: 'Save',
+            handler: data => {
+              this.tripService.addTrip(data.text).subscribe(data => {
+                this.loadTrips();
+              });
+            }
           }
-        }
-      ]
+        ]
     });
 
     prompt.present();
-  }
+  };
+
+  removeTrip(id) {
+    this.tripService.deleteTrip(id).subscribe(data => {
+      this.loadTrips();
+    })
+  };
+
 }

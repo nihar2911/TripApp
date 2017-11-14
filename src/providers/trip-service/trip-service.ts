@@ -15,9 +15,16 @@ export class TripServiceProvider {
     return this.http.get(this.apiUrl + 'trips').map(response => response.json().result);
   }
 
-
-  public addTrip(newTrip) {
-    return this.http.post(this.apiUrl + 'trips', { 'text': newTrip }).map(response => response.json().result);
+  public addTrip(newTripName) {
+    var newTrip = {
+      "tripName": newTripName,
+      "fund": {
+        "contribution": 0,
+        "expence": 0,
+        "perHead": 0
+      }
+    };
+    return this.http.post(this.apiUrl + 'trips', newTrip ).map(response => response.json().result);
   }
 
   public deleteTrip(tripId) {
