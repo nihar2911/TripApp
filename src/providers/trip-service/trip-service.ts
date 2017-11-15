@@ -14,6 +14,9 @@ export class TripServiceProvider {
   public getTrips() {
     return this.http.get(this.apiUrl + 'trips').map(response => response.json().result);
   }
+  public getTrip(tripId) {
+    return this.http.get(this.apiUrl + 'trips/' + tripId).map(response => response.json().result);
+  }
 
   public addTrip(newTripName) {
     var newTrip = {
@@ -24,11 +27,34 @@ export class TripServiceProvider {
         "perHead": 0
       }
     };
-    return this.http.post(this.apiUrl + 'trips', newTrip ).map(response => response.json().result);
+    return this.http.post(this.apiUrl + 'trips', newTrip).map(response => response.json().result);
+  }
+
+  public updateTrip(tripId, data) {
+    var sendingData, dataIdentifer;
+    if (data.username) {
+      dataIdentifer = data.username;
+    }
+    switch (dataIdentifer) {
+      case data.username:
+        var newUser = {
+          "username": data.username,
+          "TakeFromContri": data.TakeFromContri,
+          "paidInCountri": data.paidInCountri
+        };
+        sendingData = newUser;
+        break;
+    }
+    console.log("data sending from trip service and ID ", sendingData, tripId);
+    return this.http.put(this.apiUrl + 'trips/' + tripId, sendingData).map(response => response.json().result);
   }
 
   public deleteTrip(tripId) {
     return this.http.delete(this.apiUrl + 'trips/' + tripId).map(response => response.json().result);
+  }
+
+  public deleteContributor(userId) {
+    return this.http.delete(this.apiUrl + 'trips/' + userId).map(response => response.json().result);
   }
 
 }

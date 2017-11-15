@@ -10,7 +10,7 @@
   <h4>Trip List</h4>
   <ion-list>
     <ion-item-sliding *ngFor="let trip of temp">
-      <ion-item (click)="tripinfo(item)">
+      <ion-item (click)="tripinfo(trip._id)">
         {{ trip.tripName }}
       </ion-item>
       <ion-item-options side="right">

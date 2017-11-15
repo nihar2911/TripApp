@@ -15,48 +15,65 @@ export class AddContributorsPage {
 
   trips: Observable<any>;
   temp;
+  tripid;
+  users;
   constructor(public navCtrl: NavController, public navParams: NavParams, public tripService: TripServiceProvider, public alertCtrl: AlertController) {
-    this.loadTrips();
+    this.tripid = this.navParams.get("id");
+    this.loadContributors();
   }
   // Views
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddContributorsPage');
   };
 
-  loadTrips() {
-    this.trips = this.tripService.getTrips();
+
+  loadContributors() {
+    console.log("Id getting from last page", this.tripid);
+    this.trips = this.tripService.getTrip(this.tripid);
     this.trips.subscribe((val) => {
       console.log(val);
       this.temp = val;
-      console.log("Trips in temp inside subscribe", this.temp);
+      this.users = this.temp[0].users;
+      console.log("Trips in temp inside subscribe", typeof(this.temp));
     });
   };
 
-  createTrip(){
+  addTripContributor(id) {
     let prompt = this.alertCtrl.create({
-      title: "Add trip",
+      title: "Add Contributor",
       inputs: [
         {
-          name: 'text',
-          placeholder: 'Name Your Trip'
+          name: 'contributor',
+          placeholder: 'Add New Contributor'
+        },
+        {
+          name: 'contributorsAmount',
+          placeholder: 'Add Contribution'
         },
       ],
       buttons:
-      [
-        {
-          text: 'Cancle'
-        },
-        {
-          text: 'Save',
-          handler: data => {
-            this.tripService.addTrip(data.text).subscribe(data => {
-              this.loadTrips();
-            });
+        [
+          {
+            text: 'Cancle'
+          },
+          {
+            text: 'Save',
+            handler: data => {
+              let TakeFromContri:number = 0;
+              let inputData = { username: data.contributor, paidInCountri: data.contributorsAmount, TakeFromContri: TakeFromContri };
+              this.tripService.updateTrip(id, inputData).subscribe(data => {
+                this.loadContributors();
+              });
+            }
           }
-        }
-      ]
+        ]
     });
-
     prompt.present();
-  }
+  };
+
+  removeTrip(id) {
+    this.tripService.deleteContributor(id).subscribe(data => {
+      this.loadContributors();
+    })
+  };
 }

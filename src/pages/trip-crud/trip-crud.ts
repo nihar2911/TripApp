@@ -21,8 +21,9 @@ export class TripCrudPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad TripCrudPage');
   }
-  tripinfo(item){
-    this.navCtrl.push(AddContributorsPage);
+  tripinfo(tripId){
+    // console.log("sending Id from Trips",typeof(tripId));
+    this.navCtrl.push(AddContributorsPage,{id:tripId});
   }
 
   loadTrips() {

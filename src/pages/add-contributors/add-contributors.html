@@ -5,21 +5,12 @@
   </ion-navbar>
 </ion-header>
 
-<!-- Input filed form for getting name of trip and adding contributors -->
+
 <ion-content padding>
-  <ion-grid>
-    <ion-row >
-        <ion-item class="padding-left-0">
-          <ion-input type="text" placeholder="Add member"></ion-input>
-        </ion-item>
-      <p>
-        <button ion-button small icon-left color="primary" (click)="doAlert()"><ion-icon name="contact"></ion-icon> Add </button>
-      </p>
-    </ion-row>
-  </ion-grid>
-  <!-- <h4>List of Contributors</h4> -->
-  <h4>Party Peopls</h4>
-  <ion-list *ngFor="let trip of temp">
-    <ion-item (click)="itemSelected(item)">{{trip.tripName}}</ion-item>
+    <button ion-button block color="orange-dark" (click)="addTripContributor(this.tripid)">Add Contributors</button>
+  <h3>Party Peopls</h3>
+
+  <ion-list *ngFor="let user of users">
+    <ion-item (click)="removeTrip(user._id)">{{user.username}} paid in Contribution Rs.{{user.paidInCountri}}</ion-item>
   </ion-list>
 </ion-content>
