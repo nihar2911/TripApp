@@ -17,6 +17,7 @@ export class AddContributorsPage {
   temp;
   tripid;
   users;
+  contribution;
   constructor(public navCtrl: NavController, public navParams: NavParams, public tripService: TripServiceProvider, public alertCtrl: AlertController) {
     this.tripid = this.navParams.get("id");
     this.loadContributors();
@@ -34,7 +35,8 @@ export class AddContributorsPage {
       console.log(val);
       this.temp = val;
       this.users = this.temp[0].users;
-      console.log("Trips in temp inside subscribe", typeof(this.temp));
+      this.contribution = this.temp[0].fund.contribution;
+      console.log("Trips in temp inside subscribe", typeof(this.temp), this.contribution);
     });
   };
 
@@ -71,8 +73,8 @@ export class AddContributorsPage {
     prompt.present();
   };
 
-  removeTrip(id) {
-    this.tripService.deleteContributor(id).subscribe(data => {
+  removecontributor(userId) {
+    this.tripService.deleteContributor(this.tripid, userId).subscribe(data => {
       this.loadContributors();
     })
   };

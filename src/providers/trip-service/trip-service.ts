@@ -53,8 +53,9 @@ export class TripServiceProvider {
     return this.http.delete(this.apiUrl + 'trips/' + tripId).map(response => response.json().result);
   }
 
-  public deleteContributor(userId) {
-    return this.http.delete(this.apiUrl + 'trips/' + userId).map(response => response.json().result);
+  public deleteContributor(tripId, userId) {
+    // console.log("tirpID=",tripId + " userID=", userId)
+    return this.http.put(this.apiUrl + 'trips/' + tripId, {_id:userId}).map(response => response.json().result);
   }
 
 }

@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-navbar>
     <ion-title>Add Trip Members</ion-title>
@@ -7,10 +6,29 @@
 
 
 <ion-content padding>
-    <button ion-button block color="orange-dark" (click)="addTripContributor(this.tripid)">Add Contributors</button>
+  <ion-card>
+    <ion-card-header>
+      Contribution
+    </ion-card-header>
+    <ion-card-content>
+     {{contribution}}
+    </ion-card-content>
+  </ion-card>
+  <button ion-button block color="orange-dark" (click)="addTripContributor(this.tripid)">Add Contributors</button>
   <h3>Party Peopls</h3>
 
-  <ion-list *ngFor="let user of users">
-    <ion-item (click)="removeTrip(user._id)">{{user.username}} paid in Contribution Rs.{{user.paidInCountri}}</ion-item>
+  <ion-list>
+    <ion-item-sliding *ngFor="let user of users">
+      <ion-item>
+        {{user.username}} paid in Contribution Rs.{{user.paidInCountri}}
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="removecontributor(user._id)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
+
 </ion-content>
