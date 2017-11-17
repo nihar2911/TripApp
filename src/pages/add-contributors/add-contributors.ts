@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 
 import { TripServiceProvider } from './../../providers/trip-service/trip-service';
 import { Observable } from 'rxjs/Observable';
+import { ContributionAmmountPage } from "../contribution-ammount/contribution-ammount";
+  
 
 
 
@@ -26,7 +28,10 @@ export class AddContributorsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddContributorsPage');
   };
-
+  contiInfo(){
+    // console.log("sending Id from Trips",typeof(tripid));
+    this.navCtrl.push(ContributionAmmountPage,{id:this.tripid});
+  }
 
   loadContributors() {
     console.log("Id getting from last page", this.tripid);

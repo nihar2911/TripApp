@@ -1,26 +1,26 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Add Trip Members</ion-title>
+    <ion-title>Contribution</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-  <!-- <ion-card>
+  <ion-card>
     <ion-card-header>
       Contribution
     </ion-card-header>
     <ion-card-content>
-     {{contribution}}
+      Contribution is {{contribution}} and per person will be paying {{perHead}}.
     </ion-card-content>
-  </ion-card> -->
-  <button ion-button block color="orange-dark" (click)="addTripContributor(this.tripid)">Add Contributors</button>
+  </ion-card>
+  <!-- <button ion-button block color="orange-dark" (click)="addTripContributor(this.tripid)">Add Contributors</button> -->
   <h3>Party Peopls</h3>
 
   <ion-list>
     <ion-item-sliding *ngFor="let user of users">
       <ion-item>
-        {{user.username}} paid in Contribution Rs.{{user.paidInCountri}}
+        {{user.username}} paid {{user.paidInCountri}} <button ion-button outline (click)="updateContri()">Add</button>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="removecontributor(user._id)">
@@ -30,5 +30,6 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-  <button ion-button block color="orange-dark" (click)="contiInfo()">Next</button>
+
 </ion-content>
+

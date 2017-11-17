@@ -1,3 +1,4 @@
+import { ContributionAmmountPage } from './../pages/contribution-ammount/contribution-ammount';
 import { TripCrudPage } from './../pages/trip-crud/trip-crud';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -13,6 +14,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppSettingProvider } from '../providers/app-setting/app-setting';
 import { TripServiceProvider } from '../providers/trip-service/trip-service';
+import { TripCalculationProvider } from '../providers/trip-calculation/trip-calculation';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { TripServiceProvider } from '../providers/trip-service/trip-service';
     HomePage,
     ListPage,
     AddContributorsPage,
-    TripCrudPage
+    TripCrudPage,
+    ContributionAmmountPage
   ],
   imports: [
     BrowserModule,
@@ -34,13 +37,15 @@ import { TripServiceProvider } from '../providers/trip-service/trip-service';
     ListPage,
     TripCrudPage,
     AddContributorsPage,
+    ContributionAmmountPage
   ],
   providers: [
     AppSettingProvider,
     TripServiceProvider,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}   
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    TripCalculationProvider   
   ]
 })
 export class AppModule {}
