@@ -35,14 +35,41 @@ export class ContributionAmmountPage {
       this.temp = val;
       this.users = this.temp[0].users;
       this.contribution = this.calculations.contributionCal(this.users);
-      this.perHead = this.calculations.perHeadCal(this.users, this.contribution);      
+      this.perHead = this.calculations.perHeadCal(this.users, this.contribution);
       console.log("conti amt page, users:", this.users);
     });
   };
 
-  updateContri() {
-    this.tripService.updateContri(this.tripid, this.contribution, this.perHead).subscribe(data => {
-      this.loadContributors();
+  updateContri(oldContri, userId) {
+    let prompt = this.alertCtrl.create({
+      title: "Add Contribution",
+      inputs: [
+        {
+          name: 'contributorsAmount',
+          placeholder: 'Add Contribution'
+        },
+      ],
+      buttons:
+        [
+          {
+            text: 'Cancle'
+          },
+          {
+            text: 'Save',
+            handler: data => {
+              this.tripService.updateContri(
+                this.tripid,
+                this.calculations.totalContriAddtion(this.contribution, data.contributorsAmount),
+                this.calculations.perHeadCal(this.users, this.calculations.totalContriAddtion(this.contribution, data.contributorsAmount)),
+                userId,
+                this.calculations.contriAddtionOfUser(oldContri, data.contributorsAmount))
+                .subscribe(data => {
+                  this.loadContributors();
+                });
+            }
+          }
+        ]
     });
+    prompt.present();
   }
 }

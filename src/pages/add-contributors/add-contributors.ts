@@ -55,7 +55,8 @@ export class AddContributorsPage {
         },
         {
           name: 'contributorsAmount',
-          placeholder: 'Add Contribution'
+          placeholder: 'Add Contribution',
+          type: 'number'
         },
       ],
       buttons:
@@ -67,7 +68,7 @@ export class AddContributorsPage {
             text: 'Save',
             handler: data => {
               let TakeFromContri:number = 0;
-              let inputData = { username: data.contributor, paidInCountri: data.contributorsAmount, TakeFromContri: TakeFromContri };
+              let inputData = { username: data.contributor, paidInCountri: Number(data.contributorsAmount), TakeFromContri: TakeFromContri };
               this.tripService.updateTrip(id, inputData).subscribe(data => {
                 this.loadContributors();
               });

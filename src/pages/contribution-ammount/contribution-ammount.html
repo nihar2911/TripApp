@@ -17,19 +17,17 @@
   <!-- <button ion-button block color="orange-dark" (click)="addTripContributor(this.tripid)">Add Contributors</button> -->
   <h3>Party Peopls</h3>
 
-  <ion-list>
-    <ion-item-sliding *ngFor="let user of users">
-      <ion-item>
-        {{user.username}} paid {{user.paidInCountri}} <button ion-button outline (click)="updateContri()">Add</button>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="danger" (click)="removecontributor(user._id)">
-          <ion-icon name="trash"></ion-icon>
-          Delete
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
+  <ion-list *ngFor="let user of users">
+    <ion-item>
+      {{user.username}} paid {{user.paidInCountri}} +
+      <!-- <ion-input type="number" name="userContri"></ion-input> -->
+      <button ion-button outline (click)="updateContri(user.paidInCountri, user._id)">Add</button>
+    </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="danger" (click)="removecontributor(user._id)">
+        <ion-icon name="trash"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
   </ion-list>
-
 </ion-content>
-

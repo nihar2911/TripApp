@@ -55,12 +55,13 @@ export class TripServiceProvider {
 
   public deleteContributor(tripId, userId) {
     // console.log("tirpID=",tripId + " userID=", userId)
-    return this.http.put(this.apiUrl + 'trips/' + tripId, {_id:userId}).map(response => response.json().result);
+    return this.http.put(this.apiUrl + 'trips/' + tripId, { _id: userId }).map(response => response.json().result);
   }
 
-  public updateContri(tripId, contri, perHead) {
-    // console.log("tirpID=",tripId + " userID=", userId)
-    return this.http.put(this.apiUrl + 'trips/' + tripId, {contribution:contri, perHead}).map(response => response.json().result);
+  public updateContri(tripId, contri, perHead, userId, userContri) {
+    console.log(tripId, contri, perHead, userId, userContri);
+
+    return this.http.put(this.apiUrl + 'trips/' + tripId, { contribution: contri, perHead, userId, userContri }).map(response => response.json().result);
   }
 
 }
