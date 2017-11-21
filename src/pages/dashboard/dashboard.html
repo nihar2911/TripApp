@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{tripName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      Expence: {{expence}}
+      <br> contribution: {{contri}}
+    </ion-card-header>
+  </ion-card>
+
+  <button ion-button icon-left id="Dirnks" (click)="addLog('Drinks')">
+    <ion-icon name="beer"></ion-icon>
+    Drinks
+  </button>
+  <button ion-button icon-left id="Food" (click)="addLog('Food')">
+    <ion-icon name="pizza"></ion-icon>
+    Food
+  </button>
+  <button ion-button icon-left id="Cigarettes" (click)="addLog('Cigarettes')">
+    <ion-icon name="no-smoking"></ion-icon>
+    Cigarettes
+  </button>
+
+  <button ion-button icon-left id="Petrol" (click)="addLog('Petrol')">
+    <ion-icon name="flame"></ion-icon>
+    Petrol
+  </button>
+  <button ion-button icon-left id="Hotel" (click)="addLog('Hotel')">
+    <ion-icon name="home"></ion-icon>
+    Hotel
+  </button>
+  <button ion-button icon-left (click)="addLog('Toll-booth')">
+    <ion-icon name="car"></ion-icon>
+    Toll Booth
+  </button>
+  <button ion-button icon-left id="other" (click)="addLog('other')">
+    <ion-icon name="clipboard"></ion-icon>
+    Other
+  </button>
+  <h4>Logs</h4>
+  <ion-input type="text" value="" [(ngModel)]="searchText" ></ion-input>
+  <ion-list>
+      <ion-item>
+        {{i+1}}. {{log.dateAndTime | date:'dd/MM hh:m a'}} Rs.{{log.amount}} spent on {{log.itemOrThing}}
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="removeLog(log._id, log.amount)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

@@ -1,3 +1,4 @@
+import { DashboardPage } from './../pages/dashboard/dashboard';
 import { ContributionAmmountPage } from './../pages/contribution-ammount/contribution-ammount';
 import { TripCrudPage } from './../pages/trip-crud/trip-crud';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,7 +24,8 @@ import { TripCalculationProvider } from '../providers/trip-calculation/trip-calc
     ListPage,
     AddContributorsPage,
     TripCrudPage,
-    ContributionAmmountPage
+    ContributionAmmountPage,
+    DashboardPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { TripCalculationProvider } from '../providers/trip-calculation/trip-calc
     ListPage,
     TripCrudPage,
     AddContributorsPage,
-    ContributionAmmountPage
+    ContributionAmmountPage,
+    DashboardPage
   ],
   providers: [
     AppSettingProvider,

@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { TripServiceProvider } from './../../providers/trip-service/trip-service';
 import { Observable } from 'rxjs/Observable';
 import { TripCalculationProvider } from './../../providers/trip-calculation/trip-calculation';
+import { DashboardPage } from './../dashboard/dashboard';
 
 @IonicPage()
 @Component({
@@ -26,9 +27,13 @@ export class ContributionAmmountPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContributionAmmountPage');
   }
+  navToDashboard(){
+    // console.log("sending Id from Trips",typeof(tripid));
+    this.navCtrl.push(DashboardPage,{id:this.tripid});
+  }
 
   loadContributors() {
-    console.log("Id getting from last page", this.tripid);
+    // console.log("Id getting from last page", this.tripid);
     this.trips = this.tripService.getTrip(this.tripid);
     this.trips.subscribe((val) => {
       // console.log(val);
@@ -36,7 +41,7 @@ export class ContributionAmmountPage {
       this.users = this.temp[0].users;
       this.contribution = this.calculations.contributionCal(this.users);
       this.perHead = this.calculations.perHeadCal(this.users, this.contribution);
-      console.log("conti amt page, users:", this.users);
+      // console.log("conti amt page, users:", this.users);
     });
   };
 

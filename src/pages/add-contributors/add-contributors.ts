@@ -4,7 +4,8 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { TripServiceProvider } from './../../providers/trip-service/trip-service';
 import { Observable } from 'rxjs/Observable';
 import { ContributionAmmountPage } from "../contribution-ammount/contribution-ammount";
-  
+import { TripCalculationProvider } from './../../providers/trip-calculation/trip-calculation';
+
 
 
 
@@ -20,7 +21,7 @@ export class AddContributorsPage {
   tripid;
   users;
   contribution;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public tripService: TripServiceProvider, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public tripService: TripServiceProvider, public alertCtrl: AlertController, public calculations: TripCalculationProvider) {
     this.tripid = this.navParams.get("id");
     this.loadContributors();
   }
@@ -28,9 +29,9 @@ export class AddContributorsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddContributorsPage');
   };
-  contiInfo(){
+  contiInfo() {
     // console.log("sending Id from Trips",typeof(tripid));
-    this.navCtrl.push(ContributionAmmountPage,{id:this.tripid});
+    this.navCtrl.push(ContributionAmmountPage, { id: this.tripid });
   }
 
   loadContributors() {
@@ -41,7 +42,7 @@ export class AddContributorsPage {
       this.temp = val;
       this.users = this.temp[0].users;
       this.contribution = this.temp[0].fund.contribution;
-      console.log("Trips in temp inside subscribe", typeof(this.temp), this.contribution);
+      console.log("Trips in temp inside subscribe", typeof (this.temp), this.contribution);
     });
   };
 
@@ -67,8 +68,10 @@ export class AddContributorsPage {
           {
             text: 'Save',
             handler: data => {
-              let TakeFromContri:number = 0;
-              let inputData = { username: data.contributor, paidInCountri: Number(data.contributorsAmount), TakeFromContri: TakeFromContri };
+              let TakeFromContri: number = 0;
+              let totalContri = this.calculations.contriAddtionOfUser(this.contribution, data.contributorsAmount);
+              let perHead = this.calculations.perHeadCal(this.users, totalContri);
+              let inputData = { perHead: perHead, totalContri: totalContri, username: data.contributor, paidInCountri: Number(data.contributorsAmount), TakeFromContri: TakeFromContri };
               this.tripService.updateTrip(id, inputData).subscribe(data => {
                 this.loadContributors();
               });

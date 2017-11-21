@@ -1,34 +1,52 @@
-// import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-// import { Http } from '@angular/http';
-
 
 @Injectable()
 export class TripCalculationProvider {
-  contri: number;
   constructor() {
   }
 
   contributionCal(userArray) {
-    // console.log("user Array in service: ", userArray[0].paidInCountri, userArray[1].paidInCountri, userArray.length);
-    this.contri = 0;
+    let contri = 0;
     for (let i = 0; i < userArray.length; i++) {
-      this.contri = this.contri + userArray[i].paidInCountri;
+      contri = contri + userArray[i].paidInCountri;
     }
-    return this.contri;
+    return contri;
   };
 
   perHeadCal(userArray, contri) {
+    console.log("user array", userArray.length);
+    console.log("user array", contri);
     return (contri / userArray.length)
   }
   contriAddtionOfUser(oldContri, newContri) {
     let newcontri = Number(newContri);
-    console.log(typeof (oldContri), typeof (newcontri), oldContri + newcontri);
     return oldContri + newcontri;
   }
-  totalContriAddtion(nowContri, contriAfterUserAdds){
-   let NC= Number(nowContri);
-   let CAUA = Number(contriAfterUserAdds);
-   return NC+CAUA;
+  totalContriAddtion(nowContri, contriAfterUserAdds) {
+    let NC = Number(nowContri);
+    let CAUA = Number(contriAfterUserAdds);
+    return NC + CAUA;
+  }
+  contriAfterLog(oldContri, logAmount) {
+    let OC = Number(oldContri);
+    let LA = Number(logAmount);
+    return OC - LA
+  }
+  expenceAfterLog(oldExpence, logAmount) {
+    let OE = Number(oldExpence);
+    let LA = Number(logAmount);
+    return OE + LA
+  }
+
+  expenceAfterDeletingLog(oldExpence, logAmount) {
+    let OE = Number(oldExpence);
+    let LA = Number(logAmount);
+    return OE - LA;
+  }
+  contriAfterDeletingLog(oldContri, logAmount) {
+    let OC = Number(oldContri);
+    let LA = Number(logAmount);
+    console.log(OC+LA);
+    return OC + LA
   }
 }
