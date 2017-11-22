@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-navbar>
     <ion-title>Trips</ion-title>
@@ -6,24 +5,30 @@
 </ion-header>
 
 <!-- Input filed form for getting name of trip and adding contributors -->
-<ion-content padding>
-  <h4>Trip List</h4>
+<ion-content>
   <ion-list>
+    <ion-list-header>
+      RECENT TRIPS
+    </ion-list-header>
     <ion-item-sliding *ngFor="let trip of temp">
       <ion-item (click)="tripinfo(trip._id)">
         {{ trip.tripName }}
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="danger" (click)="removeTrip(trip._id)">
-        <ion-icon name="trash"></ion-icon>
+        <button ion-button color="primary" (click)="removeTrip(trip._id)">
+        <ion-icon name="trash" ios="ios-trash-outline" md="md-trash"></ion-icon>
         Delete
       </button>
       </ion-item-options>
     </ion-item-sliding>
- 
+
   </ion-list>
   <!-- <ion-list *ngFor="let trip of temp">
     <ion-item (click)="tripinfo(item)">{{trip.tripName}}</ion-item>
   </ion-list> -->
-  <button ion-button block color="orange-dark" (click)="createTrip()">Create New Trip</button>
+
 </ion-content>
+
+<ion-footer>
+    <button ion-button block (click)="createTrip()">Create New Trip</button>
+</ion-footer>

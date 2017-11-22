@@ -1,11 +1,30 @@
 page-add-contributors {
-    .list-ios > .item-block:first-child {
+    .item-inner{
+        padding: 10px;
+    }
+    .list-header-md{
         border-top: none;
     }
-    .list-ios .item-ios{
-        padding-inline-start: 0px;
+    .item{
+        padding-left: 0
     }
-    .padding-left-0{
-        padding-left: 0px;
+    .button{
+        margin: 0;
+        font-weight: 300;
+    }
+    .list-md > .item-block:last-child .item-inner,  .list-md > .item-wrapper:last-child .item-inner {
+        border-bottom: 1px Solid ;
+    }
+    .list-md > .item-block:first-child .item-inner,  .list-md > .item-wrapper:first-child .item-inner {
+        border-top: 1px Solid !important;
+    }
+    .scroll-content{
+        padding: 0;
+    }
+    ion-item-options .button{
+        font-size: 12px;
+    }
+    ion-item-options .button ion-icon{
+        font-size: 24px;
     }
 }

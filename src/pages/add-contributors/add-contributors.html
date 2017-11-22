@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Add Trip Members</ion-title>
+    <ion-title><span float-right (click)="addTripContributor(this.tripid)">Add <ion-icon name="adde" ios="ios-add" md="md-add"></ion-icon></span></ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -14,12 +14,16 @@
      {{contribution}}
     </ion-card-content>
   </ion-card> -->
-  <button ion-button block color="orange-dark" (click)="addTripContributor(this.tripid)">Add Contributors</button>
-  <h3>Party Peopls</h3>
+  
+  <ion-list-header>
+    TRIP MEMBERS
+  </ion-list-header>
   <ion-list>
     <ion-item-sliding *ngFor="let user of users">
       <ion-item>
-        {{user.username}} paid in Contribution Rs.{{user.paidInCountri}}
+        <ion-icon name="contact" color="primary" item-start></ion-icon>
+        {{user.username}}
+        <span item-end><img src="../assets/imgs/rupee-icon.png" alt="Rupee" srcset="" width="8">  {{user.paidInCountri}}</span>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="removecontributor(user._id)">
@@ -29,5 +33,26 @@
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-  <button ion-button block color="orange-dark" (click)="contiInfo()">Next</button>
+  <!-- <ion-list>
+    <ion-item>
+      <ion-icon name="leaf" item-start></ion-icon>
+      Rs.{{user.paidInCountri}}
+      <span item-end>Game</span>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="leaf" item-start></ion-icon>
+      Herbology
+      <ion-icon name="rose" item-end></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="leaf" item-start></ion-icon>
+      Herbology
+      <ion-icon name="rose" item-end></ion-icon>
+    </ion-item>
+  </ion-list> -->
+  
 </ion-content>
+
+<ion-footer>
+    <button ion-button block (click)="contiInfo()">Next</button>
+</ion-footer>
