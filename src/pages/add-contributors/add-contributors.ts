@@ -54,11 +54,11 @@ export class AddContributorsPage {
           name: 'contributor',
           placeholder: 'Add New Contributor'
         },
-        {
-          name: 'contributorsAmount',
-          placeholder: 'Add Contribution',
-          type: 'number'
-        },
+        // {
+        //   name: 'contributorsAmount',
+        //   placeholder: 'Add Contribution',
+        //   type: 'number'
+        // },
       ],
       buttons:
         [
@@ -69,9 +69,10 @@ export class AddContributorsPage {
             text: 'Save',
             handler: data => {
               let TakeFromContri: number = 0;
+              let paidInCountri: number = 0;
               let totalContri = this.calculations.contriAddtionOfUser(this.contribution, data.contributorsAmount);
               let perHead = this.calculations.perHeadCal(this.users, totalContri);
-              let inputData = { perHead: perHead, totalContri: totalContri, username: data.contributor, paidInCountri: Number(data.contributorsAmount), TakeFromContri: TakeFromContri };
+              let inputData = { perHead: perHead, totalContri: totalContri, username: data.contributor, paidInCountri: paidInCountri, TakeFromContri: TakeFromContri };
               this.tripService.updateTrip(id, inputData).subscribe(data => {
                 this.loadContributors();
               });
