@@ -2,8 +2,8 @@
 import { Injectable } from '@angular/core';
 
 const CONFIG = {
-  // apiUrl: 'https://whispering-springs-12868.herokuapp.com/'
-  apiUrl: 'http://127.0.0.1:3001/'
+  apiUrl: 'https://whispering-springs-12868.herokuapp.com/'
+  // apiUrl: 'http://127.0.0.1:3001/'
 }
 
 @Injectable()

@@ -46,8 +46,8 @@
     Other
   </button>
   <h4>Logs</h4>
-  <ion-input type="text" value="" [(ngModel)]="searchText" ></ion-input>
   <ion-list>
+    <ion-item-sliding *ngFor="let log of logs;let i = index">
       <ion-item>
         {{i+1}}. {{log.dateAndTime | date:'dd/MM hh:m a'}} Rs.{{log.amount}} spent on {{log.itemOrThing}}
       </ion-item>
