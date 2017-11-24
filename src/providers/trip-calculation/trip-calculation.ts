@@ -22,6 +22,11 @@ export class TripCalculationProvider {
     let newcontri = Number(newContri);
     return oldContri + newcontri;
   }
+  contriAfterDeletingUser(nowContri, contriAfterUserDelete){
+    let NC = Number(nowContri);
+    let CAUD = Number(contriAfterUserDelete);
+    return NC - CAUD;
+  }
   totalContriAddtion(nowContri, contriAfterUserAdds) {
     let NC = Number(nowContri);
     let CAUA = Number(contriAfterUserAdds);

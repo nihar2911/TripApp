@@ -5,6 +5,7 @@ import { TripServiceProvider } from './../../providers/trip-service/trip-service
 import { Observable } from 'rxjs/Observable';
 import { TripCalculationProvider } from './../../providers/trip-calculation/trip-calculation';
 import { ContributionAmmountPage } from './../contribution-ammount/contribution-ammount'
+import { TripLogPage } from './../trip-log/trip-log';
 
 @IonicPage()
 @Component({
@@ -36,6 +37,9 @@ export class DashboardPage {
   contiInfo() {
     // console.log("sending Id from Trips",typeof(tripid));
     this.navCtrl.push(ContributionAmmountPage, { id: this.tripid });
+  }
+  navToLog() {
+    this.navCtrl.push(TripLogPage, { id: this.tripid });
   }
 
   loadContributors() {

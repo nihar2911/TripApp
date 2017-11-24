@@ -26,7 +26,7 @@
         <span item-end><img src="../assets/imgs/rupee-icon.png" alt="Rupee" srcset="" width="8">  {{user.paidInCountri}}</span>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="danger" (click)="removecontributor(user._id)">
+        <button ion-button color="danger" (click)="removeContributor(user._id, user.paidInCountri)">
           <ion-icon name="trash"></ion-icon>
           Delete
         </button>

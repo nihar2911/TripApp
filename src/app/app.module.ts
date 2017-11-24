@@ -4,7 +4,7 @@ import { TripCrudPage } from './../pages/trip-crud/trip-crud';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { NavController, AlertController, ToastController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -16,6 +16,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AppSettingProvider } from '../providers/app-setting/app-setting';
 import { TripServiceProvider } from '../providers/trip-service/trip-service';
 import { TripCalculationProvider } from '../providers/trip-calculation/trip-calculation';
+import { TripLogPage } from '../pages/trip-log/trip-log';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TripCalculationProvider } from '../providers/trip-calculation/trip-calc
     AddContributorsPage,
     TripCrudPage,
     ContributionAmmountPage,
-    DashboardPage
+    DashboardPage,
+    TripLogPage
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { TripCalculationProvider } from '../providers/trip-calculation/trip-calc
     TripCrudPage,
     AddContributorsPage,
     ContributionAmmountPage,
-    DashboardPage
+    DashboardPage,
+    TripLogPage
   ],
   providers: [
     AppSettingProvider,

@@ -20,6 +20,7 @@ export class AddContributorsPage {
   temp;
   tripid;
   users;
+  userAmount;
   contribution;
   constructor(public navCtrl: NavController, public navParams: NavParams, public tripService: TripServiceProvider, public alertCtrl: AlertController, public calculations: TripCalculationProvider) {
     this.tripid = this.navParams.get("id");
@@ -83,8 +84,12 @@ export class AddContributorsPage {
     prompt.present();
   };
 
-  removecontributor(userId) {
-    this.tripService.deleteContributor(this.tripid, userId).subscribe(data => {
+  removeContributor(userId, UserAmount) {
+    let userToDeleteData = {
+      userId: userId,
+      contriAfterDeletingUser: this.calculations.contriAfterDeletingUser(this.contribution, UserAmount)
+    };
+    this.tripService.deleteContributor(this.tripid, userToDeleteData).subscribe(data => {
       this.loadContributors();
     })
   };
