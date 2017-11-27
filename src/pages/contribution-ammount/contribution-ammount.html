@@ -7,7 +7,7 @@
 
 
 <ion-content padding>
-  <ion-grid class="bg-black">
+  <ion-grid class="pan-head">
     <ion-row text-center>
       <ion-col col-12>Total Contribution</ion-col>
     </ion-row>
@@ -22,25 +22,27 @@
   </ion-grid>
   <!-- <button ion-button block color="orange-dark" (click)="addTripContributor(this.tripid)">Add Contributors</button> -->
 
-  <ion-list-header>
-    TRIP MEMBERS &amp; CONTRIBUTION
-  </ion-list-header>
-  <ion-list >
-    <ion-item-sliding *ngFor="let user of users">
-      <ion-item>
-        <ion-icon name="contact" color="primary" item-start></ion-icon>
-        {{user.username}}
-        <span ><img src="../assets/imgs/rupee-icon.png" alt="Rupee" srcset="" width="8">  {{user.paidInCountri}}</span>
-        <button item-end ion-button outline (click)="updateContri(user.paidInCountri, user._id)">Add</button>
-      </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="danger" (click)="removecontributor(user._id)">
-            <ion-icon name="trash"></ion-icon>
-            Delete
-          </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+  <ion-grid class="pan-head-margine">
+    <ion-list-header>
+      TRIP MEMBERS &amp; CONTRIBUTION
+    </ion-list-header>
+    <ion-list>
+      <ion-item-sliding *ngFor="let user of users">
+        <ion-item>
+          <ion-icon name="contact" color="primary" item-start></ion-icon>
+          {{user.username}}
+          <span><i class="fa fa-inr" aria-hidden="true"></i>  {{user.paidInCountri}}</span>
+          <button item-end ion-button outline (click)="updateContri(user.paidInCountri, user._id)">Add</button>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="danger" (click)="removecontributor(user._id)">
+                  <ion-icon name="trash"></ion-icon>
+                  Delete
+                </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-grid>
 
 </ion-content>
 

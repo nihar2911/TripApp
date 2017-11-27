@@ -1,22 +1,108 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>{{tripName}}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
+  <ion-grid padding class="pan-head-dash">
+    <ion-row>
+      <ion-col col-6 text-left>Expence: <i class="fa fa-inr" aria-hidden="true"></i> {{expence}}</ion-col>
+      <ion-col col-6 text-left>Remaining: <i class="fa fa-inr" aria-hidden="true"></i> {{contri}}</ion-col>
+    </ion-row>
+  </ion-grid>
 
-<ion-content padding>
-
-  <ion-card>
+  <!-- <ion-card>
     <ion-card-header>
       Expence: {{expence}}
       <br> contribution: {{contri}}
     </ion-card-header>
-  </ion-card>
+  </ion-card> -->
 
-  <button ion-button icon-left id="Dirnks" (click)="addLog('Drinks')">
+  <ion-grid class="pan-head-dash-margin">
+    <ion-row>
+      <!--Item Alchohol -->
+      <ion-col col-4 text-center (click)="addLog('Drinks')" class="dash-box">
+        <img src="../assets/imgs/icon-alchohol.png" alt="Alchohol" srcset="" width="64"> <br> Alchohol
+      </ion-col>
+      <!--Item Alchohol -->
+
+      <!--Item Food -->
+      <ion-col col-4 text-center (click)="addLog('Food')" class="dash-box">
+        <img src="../assets/imgs/icon-food.png" alt="Food" srcset="" width="64"> <br> Food
+      </ion-col>
+      <!--Item Food -->
+
+      <!--Item Water -->
+      <ion-col col-4 text-center (click)="addLog('Water')" class="dash-box">
+        <img src="../assets/imgs/icon-water.png" alt="Water" srcset="" width="64"> <br> Water
+      </ion-col>
+      <!--Item Water -->
+    </ion-row>
+
+    <ion-row>
+      <!--Item Cigarettes -->
+      <ion-col col-4 text-center (click)="addLog('Cigarettes')" class="dash-box">
+        <img src="../assets/imgs/icon-cigarette.png" alt="Cigarettes" srcset="" width="64"> <br> Cigarettes
+      </ion-col>
+      <!--Item Cigarettes -->
+
+      <!--Item Toll Booth -->
+      <ion-col col-4 text-center (click)="addLog('TollBooth')" class="dash-box">
+        <img src="../assets/imgs/icon-tollbooth.png" alt="Toll Booth" srcset="" width="64"> <br> Toll Booth
+      </ion-col>
+      <!--Item Toll Booth-->
+
+      <!--Item Fuel -->
+      <ion-col col-4 text-center (click)="addLog('Fuel')" class="dash-box">
+        <img src="../assets/imgs/icon-fuel.png" alt="Fuel" srcset="" width="64"> <br> Fuel
+      </ion-col>
+      <!--Item Fuel -->
+    </ion-row>
+
+    <ion-row>
+      <!--Item Grocery -->
+      <ion-col col-4 text-center (click)="addLog('Grocery')" class="dash-box">
+        <img src="../assets/imgs/icon-grocery.png" alt="Grocery" srcset="" width="64"> <br> Grocery
+      </ion-col>
+      <!--Item Grocery -->
+
+      <!--Item Hotel -->
+      <ion-col col-4 text-center (click)="addLog('Hotel')" class="dash-box">
+        <img src="../assets/imgs/icon-hotel.png" alt="Hotel" srcset="" width="64"> <br> Hotel
+      </ion-col>
+      <!--Item Hotel-->
+
+      <!--Item Parking -->
+      <ion-col col-4 text-center (click)="addLog('Parking')" class="dash-box">
+        <img src="../assets/imgs/icon-parking.png" alt="Parking" srcset="" width="64"> <br> Parking
+      </ion-col>
+      <!--Item Parking -->
+    </ion-row>
+
+    <ion-row>
+      <!--Item Car -->
+      <ion-col col-4 text-center (click)="addLog('Car')" class="dash-box">
+        <img src="../assets/imgs/icon-car.png" alt="Car" srcset="" width="64"> <br> Car
+      </ion-col>
+      <!--Item Car -->
+
+      <!--Item Scooter -->
+      <ion-col col-4 text-center (click)="addLog('Scooter')" class="dash-box">
+        <img src="../assets/imgs/icon-scooter.png" alt="Scooter" srcset="" width="64"> <br> Scooter
+      </ion-col>
+      <!--Item Scooter-->
+
+      <!--Item Other -->
+      <ion-col col-4 text-center (click)="addLog('Other')" class="dash-box">
+        <img src="../assets/imgs/icon-other.png" alt="Other" srcset="" width="64"> <br> Other
+      </ion-col>
+      <!--Item Other -->
+    </ion-row>
+
+  </ion-grid>
+
+  <!-- <button ion-button icon-left id="Dirnks" (click)="addLog('Drinks')">
     <ion-icon name="beer"></ion-icon>
     Drinks
   </button>
@@ -49,8 +135,11 @@
     <ion-icon name="clipboard"></ion-icon>
     Other
   </button>
-  <h4>Logs</h4>
-  <ion-list>
+  <h4>Logs</h4> -->
+
+  <!-- Log list -->
+
+  <!-- <ion-list>
     <ion-item-sliding *ngFor="let log of logs;let i = index">
       <ion-item>
         {{i+1}}. {{log.dateAndTime | date:'dd/MM hh:m a'}} Rs.{{log.amount}} spent on {{log.itemOrThing}}
@@ -62,7 +151,8 @@
         </button>
       </ion-item-options>
     </ion-item-sliding>
-  </ion-list>
+  </ion-list> -->
+
 </ion-content>
 <ion-footer>
   <button ion-button block (click)="navToLog()">Log</button>

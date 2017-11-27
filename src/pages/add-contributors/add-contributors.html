@@ -23,7 +23,7 @@
       <ion-item>
         <ion-icon name="contact" color="primary" item-start></ion-icon>
         {{user.username}}
-        <span item-end><img src="../assets/imgs/rupee-icon.png" alt="Rupee" srcset="" width="8">  {{user.paidInCountri}}</span>
+        <span item-end><i class="fa fa-inr" aria-hidden="true"></i>  {{user.paidInCountri}}</span>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="removeContributor(user._id, user.paidInCountri)">

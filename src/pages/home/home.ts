@@ -4,6 +4,7 @@ import { NavController, AlertController, ToastController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 // import { AddContributorsPage } from '../add-contributors/add-contributors'
 import { TripCrudPage } from './../trip-crud/trip-crud';
+import { DashboardPage } from './../dashboard/dashboard';
 
 
 @Component({
@@ -19,6 +20,9 @@ export class HomePage {
   }
   tripCrudPage(){
     this.navCtrl.push(TripCrudPage);
+  }
+  navToDash(){
+    this.navCtrl.push(DashboardPage);
   }
   loadTrips() {
     this.trips = this.TripServiceProvider.getTrips();

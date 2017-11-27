@@ -7,12 +7,13 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-item>
-        <ion-label fixed>Search</ion-label>
-        <ion-input type="text" value="" [(ngModel)="searchItem"]></ion-input>
-      </ion-item>
+  <ion-item>
+    <ion-label fixed>Search</ion-label>
+    <!-- <ion-input type="text" value="" [(ngModel)="searchItem"]></ion-input> -->
+  </ion-item>
+
   <ion-list>
-    <ion-item-sliding *ngFor="let log of logs;let i = index;">
+    <!-- <ion-item-sliding *ngFor="let log of logs;let i = index;">
       <ion-item>
         {{i+1}}. {{log.dateAndTime | date:'dd/MM hh:m a'}} Rs.{{log.amount}} spent on {{log.itemOrThing}}
       </ion-item>
@@ -22,8 +23,18 @@
           Delete
         </button>
       </ion-item-options>
-    </ion-item-sliding>
+    </ion-item-sliding> -->
+    <ion-item *ngFor="let log of logs;let i = index;">
+      <ion-avatar item-start>
+          {{i+1}}
+      </ion-avatar>
+      <h1><i class="fa fa-inr" aria-hidden="true"></i> {{log.amount}}</h1>
+      <p>{{log.dateAndTime | date:'dd/MM hh:m a'}}</p>
+      <span item-right>{{log.itemOrThing}} </span>
+    </ion-item>
   </ion-list>
+
+
 </ion-content>
 <ion-footer>
   <button ion-button block (click)="navToDashboard()">Dashboard</button>
